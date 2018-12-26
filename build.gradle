@@ -1,0 +1,33 @@
+group 'com.dvorac'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java-gradle-plugin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile "org.eclipse.jgit:org.eclipse.jgit:5.2.0.201812061821-r"
+    compile "org.apache.logging.log4j:log4j-api:2.7"
+    compile "org.apache.logging.log4j:log4j-core:2.7"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:2.7"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.3.1"
+    testCompile "org.mockito:mockito-core:2.+"
+}
+
+gradlePlugin {
+    plugins {
+        pipeline {
+            id = 'pipeline'
+            implementationClass = 'com.dvorac.pipeline.PipelinePlugin'
+        }
+    }
+}
+
